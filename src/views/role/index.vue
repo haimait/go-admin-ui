@@ -108,7 +108,7 @@
             <template slot-scope="scope">
               <el-switch
                 v-model="scope.row.status"
-                active-value="0"
+                active-value="2"
                 inactive-value="1"
                 @change="handleStatusChange(scope.row)"
               />
@@ -495,7 +495,7 @@ export default {
         if (valid) {
           if (this.form.roleId !== undefined) {
             this.form.menuIds = this.getMenuAllCheckedKeys()
-            updateRole(this.form).then(response => {
+            updateRole(this.form, this.form.roleId).then(response => {
               if (response.code === 200) {
                 this.msgSuccess('修改成功')
                 this.open = false

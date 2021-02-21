@@ -187,7 +187,6 @@
                 <treeselect
                   v-model="form.deptId"
                   :options="deptOptions"
-                  :normalizer="normalizer"
                   placeholder="请选择归属部门"
                 />
               </el-form-item>
@@ -356,7 +355,7 @@ export default {
       form: {},
       defaultProps: {
         children: 'children',
-        label: 'deptName'
+        label: 'label'
       },
       // 用户导入参数
       upload: {
@@ -458,7 +457,7 @@ export default {
     },
     // 节点单击事件
     handleNodeClick(data) {
-      this.queryParams.deptId = data.deptId
+      this.queryParams.deptId = data.id
       this.getList()
     },
     /** 转换菜单数据结构 */
@@ -467,8 +466,8 @@ export default {
         delete node.children
       }
       return {
-        id: node.deptId,
-        label: node.deptName,
+        id: node.id,
+        label: node.label,
         children: node.children
       }
     },
